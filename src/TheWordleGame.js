@@ -4,11 +4,13 @@ import LetterInput from './LetterInput'
 import './6.json'
 import refresh from './refresh.svg'
 import { useState } from 'react'
+import { Attempt } from './Attempt'
 
 export default function TheWordleGame(props) {
   let word = props.words[Math.floor(Math.random() * props.words.length)]
   let [inputWord, setInputWord] = useState([])
   let [searchedWord, setSearchedWord] = useState(word)
+  const [attempts, setAttempts] = useState([])
   let wordArray = word.split('')
   console.log(word)
   console.log(wordArray)
@@ -29,7 +31,9 @@ export default function TheWordleGame(props) {
 
   const handleSubmit = (event) => {
     let inputString = inputWord.join('')
+    setAttempts([...attempts, inputString])
     if (inputString === searchedWord) {
+      setSearchedWord([])
       return alert('You have guessed the word')
     } else {
       return alert('Try again')
@@ -44,6 +48,9 @@ export default function TheWordleGame(props) {
   return (
     <div className="TheWordleGame">
       <div className="wordInput">
+        {attempts.map((a) => (
+          <Attempt word={a} />
+        ))}
         <form>
           <LetterInput
             handleInput={handleInput}

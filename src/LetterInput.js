@@ -6,7 +6,7 @@ export default function LetterInput(props) {
   let [letter, setLetter] = useState(null)
 
   const checkLetter = () => {
-    letter === props.letter ? alert('true') : alert('not true')
+    //letter === props.letter ? alert('true') : alert('not true')
   }
 
   const letterChange = (event) => {
