@@ -7,13 +7,13 @@ import { useState } from 'react'
 import { Attempt } from './Attempt'
 
 export default function TheWordleGame(props) {
-  let word = props.words[Math.floor(Math.random() * props.words.length)]
   let [inputWord, setInputWord] = useState([])
-  let [searchedWord, setSearchedWord] = useState(word)
+  let [searchedWord, setSearchedWord] = useState(props.word)
   const [attempts, setAttempts] = useState([])
-  let wordArray = word.split('')
-  console.log(word)
-  console.log(wordArray)
+  let wordArray = searchedWord.split('')
+  console.log(searchedWord)
+
+  console.log(attempts)
 
   const handleInput = (event) => {
     if (event.keyCode > 64 && event.keyCode < 91) {
@@ -25,18 +25,25 @@ export default function TheWordleGame(props) {
 
   const handleInputChange = (event) => {
     setInputWord([...inputWord, event.target.value])
-    console.log(inputWord)
-    console.log(event.target.value)
+  }
+
+  const resetForm = () => {
+    document.getElementById('wordForm').reset()
   }
 
   const handleSubmit = (event) => {
     let inputString = inputWord.join('')
     setAttempts([...attempts, inputString])
-    if (inputString === searchedWord) {
-      setSearchedWord([])
-      return alert('You have guessed the word')
+    if (inputString.length === 6) {
+      if (inputString === searchedWord) {
+        return alert('You have guessed the word')
+      } else {
+        resetForm()
+        return alert('Try again')
+      }
     } else {
-      return alert('Try again')
+      alert('Fill out all fields')
+      return null
     }
   }
 
@@ -48,10 +55,10 @@ export default function TheWordleGame(props) {
   return (
     <div className="TheWordleGame">
       <div className="wordInput">
-        {attempts.map((a) => (
-          <Attempt word={a} />
+        {attempts.map((a, index) => (
+          <Attempt word={a} key={index} searchedWord={wordArray} />
         ))}
-        <form>
+        <form id="wordForm">
           <LetterInput
             handleInput={handleInput}
             handleInputChange={handleInputChange}
