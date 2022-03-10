@@ -29,6 +29,7 @@ export default function TheWordleGame(props) {
 
   const resetForm = () => {
     document.getElementById('wordForm').reset()
+    setInputWord([])
   }
 
   const handleSubmit = (event) => {
@@ -36,6 +37,7 @@ export default function TheWordleGame(props) {
     setAttempts([...attempts, inputString])
     if (inputString.length === 6) {
       if (inputString === searchedWord) {
+        resetForm()
         return alert('You have guessed the word')
       } else {
         resetForm()
