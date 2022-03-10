@@ -18,3 +18,10 @@
   color: rgb(103, 103, 154);
   font-family: 'Passion One', cursive;
 }
+
+.letterInput input:focus {
+  background-color: rgb(246, 246, 246);
+  outline: none;
+  justify-content: center;
+  caret-color: transparent;
+}
