@@ -9,7 +9,7 @@
   margin: 0px 10px;
   overflow: hidden;
   display: flex;
-
+  text-align: center;
   justify-content: center;
   align-items: center;
   font-size: 40px;
@@ -19,7 +19,8 @@
   font-family: 'Passion One', cursive;
 }
 
-.letterInput input:focus {
+.letterInput input:focus,
+.letterInput input:visited {
   background-color: rgb(246, 246, 246);
   outline: none;
   justify-content: center;
