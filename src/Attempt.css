@@ -1,3 +1,9 @@
+.guessedWord {
+  display: 'flex';
+  flex-direction: 'row';
+  justify-content: center;
+  margin-bottom: 30px;
+}
 .correctLetter {
   background-color: rgb(64, 173, 143);
   color: white;

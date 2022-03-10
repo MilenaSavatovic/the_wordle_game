@@ -13,7 +13,10 @@ export const Attempt = ({ word, searchedWord }) => {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <div
+      className="guessedWord"
+      style={{ display: 'flex', flexDirection: 'row' }}
+    >
       {letters.map((letter, index) => (
         <Letter
           letter={letter}

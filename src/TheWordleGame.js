@@ -52,13 +52,19 @@ export default function TheWordleGame(props) {
     setSearchedWord(props.words[Math.floor(Math.random() * props.words.length)])
   }
 
+  const submitForm = (e) => {
+    if (e.which === 13) {
+      handleSubmit()
+    }
+  }
+
   return (
     <div className="TheWordleGame">
       <div className="wordInput">
         {attempts.map((a, index) => (
           <Attempt word={a} key={index} searchedWord={wordArray} />
         ))}
-        <form id="wordForm">
+        <form id="wordForm" onKeyPress={submitForm}>
           <LetterInput
             handleInput={handleInput}
             handleInputChange={handleInputChange}
