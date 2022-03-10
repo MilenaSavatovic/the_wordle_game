@@ -2,10 +2,15 @@ import { useMemo } from 'react'
 import './Attempt.css'
 
 export const Attempt = ({ word, searchedWord }) => {
-  console.log(word, searchedWord)
   const letters = useMemo(() => {
     return word ? word.split('') : []
   }, [word])
+
+  let trimmedWord = searchedWord
+
+  let wordTrimming = (l) => {
+    return (trimmedWord = searchedWord.join('').replace(l, '').split(''))
+  }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -13,18 +18,20 @@ export const Attempt = ({ word, searchedWord }) => {
         <Letter
           letter={letter}
           key={`${letter}-${index}`}
-          searchedWord={searchedWord}
+          trimmedWord={trimmedWord}
           index={index}
+          wordTrimming={wordTrimming}
         />
       ))}
     </div>
   )
 }
 
-const Letter = ({ letter, searchedWord, index }) => {
-  if (letter === searchedWord[index]) {
+const Letter = ({ letter, trimmedWord, index, wordTrimming }) => {
+  if (letter === trimmedWord[index]) {
     return <div className="correctLetter letter">{letter}</div>
-  } else if (searchedWord.join('').includes(letter)) {
+  } else if (trimmedWord.join('').includes(letter)) {
+    wordTrimming(letter)
     return <div className="misplacedLetter letter">{letter}</div>
   } else {
     return <div className="wrongLetter letter">{letter}</div>
