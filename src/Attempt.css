@@ -1,9 +1,13 @@
 .guessedWord {
-  display: 'flex';
-  flex-direction: 'row';
   justify-content: space-evenly;
-  margin-bottom: 30px;
   height: 90px;
+  width: 100%;
+
+  border-radius: 20px;
+  display: flex;
+
+  padding: 10px;
+  margin-bottom: 40px;
 }
 .correctLetter {
   background-color: rgb(64, 173, 143);
