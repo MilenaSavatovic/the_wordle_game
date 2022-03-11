@@ -7,19 +7,24 @@ import { useState } from 'react'
 import { Attempt } from './Attempt'
 
 export default function TheWordleGame(props) {
-  let [inputWord, setInputWord] = useState([])
-  let [searchedWord, setSearchedWord] = useState(props.word)
+  const [inputWord, setInputWord] = useState([])
+  const [searchedWord, setSearchedWord] = useState(props.word)
   const [attempts, setAttempts] = useState([])
   let wordArray = searchedWord.split('')
   console.log(searchedWord)
-
-  console.log(attempts)
 
   const handleInput = (event) => {
     if (event.keyCode > 64 && event.keyCode < 91) {
       const form = event.target.form
       const index = [...form].indexOf(event.target)
       form.elements[index + 1].focus()
+    } else {
+      event.target.value = null
+      resetForm()
+      event.target.form.elements[0].focus()
+      return alert(
+        'Please enter a valid value - Only letters allowed. Try again.',
+      )
     }
   }
 
@@ -35,6 +40,7 @@ export default function TheWordleGame(props) {
   const handleSubmit = (event) => {
     let inputString = inputWord.join('')
     setAttempts([...attempts, inputString])
+
     if (inputString.length === 6) {
       if (inputString === searchedWord) {
         resetForm()
@@ -45,7 +51,9 @@ export default function TheWordleGame(props) {
       }
     } else {
       alert('Fill out all fields')
-      return null
+      resetForm()
+      setAttempts([])
+      return false
     }
   }
 

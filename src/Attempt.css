@@ -1,8 +1,9 @@
 .guessedWord {
   display: 'flex';
   flex-direction: 'row';
-  justify-content: center;
+  justify-content: space-evenly;
   margin-bottom: 30px;
+  height: 90px;
 }
 .correctLetter {
   background-color: rgb(64, 173, 143);
@@ -38,4 +39,6 @@
 .misplacedLetter {
   background-color: rgb(250, 206, 80);
   color: rgb(122, 79, 33);
+  box-shadow: rgb(251 164 68) 0px 9px 19px 1px;
+  border: 5px solid rgb(251, 164, 68);
 }
