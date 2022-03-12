@@ -9,7 +9,7 @@ export default function TheWordleGame(props) {
   const [inputWord, setInputWord] = useState([])
   const [searchedWord, setSearchedWord] = useState(props.word)
   const [attempts, setAttempts] = useState([])
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
   let wordArray = searchedWord.split('')
   console.log(searchedWord)
 
@@ -40,10 +40,10 @@ export default function TheWordleGame(props) {
   const handleSubmit = (event) => {
     let inputString = inputWord.join('')
     setAttempts([...attempts, inputString])
-    setCount(count + 1)
-    console.log(count)
+    // setCount(count + 1)
+    // console.log(count)
     console.log(inputWord)
-    console.log(inputWord.length)
+    // console.log(inputWord.length)
     if (inputWord.length === 6) {
       if (inputString === searchedWord) {
         resetForm()
@@ -63,7 +63,7 @@ export default function TheWordleGame(props) {
       alert('Fill out all fields')
       resetForm()
       setAttempts([])
-      setCount(0)
+      // setCount(0)
       return false
     }
   }
