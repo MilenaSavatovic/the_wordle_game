@@ -6,17 +6,20 @@ export const Attempt = ({ word, searchedWord }) => {
     return word ? word.split('') : []
   }, [word])
 
+  // const [trimmedWord, setTrimmedWord] = useState(searchedWord)
+  // let trimmedWord = searchedWord
+
   let trimmedWord = searchedWord
 
   let wordTrimming = (l) => {
-    return (trimmedWord = searchedWord.join('').replace(l, '').split(''))
+    trimmedWord = searchedWord.join('').replace(l, '').split('')
+    console.log(trimmedWord)
+    return trimmedWord
+    // setTrimmedWord(searchedWord.join('').replace(l, '').split(''))
   }
 
   return (
-    <div
-      className="guessedWord"
-      style={{ display: 'flex', flexDirection: 'row' }}
-    >
+    <div className="guessedWord">
       {letters.map((letter, index) => (
         <Letter
           letter={letter}
@@ -35,6 +38,7 @@ const Letter = ({ letter, trimmedWord, index, wordTrimming }) => {
     return <div className="correctLetter letter">{letter}</div>
   } else if (trimmedWord.join('').includes(letter)) {
     wordTrimming(letter)
+    console.log(trimmedWord)
     return <div className="misplacedLetter letter">{letter}</div>
   } else {
     return <div className="wrongLetter letter">{letter}</div>
