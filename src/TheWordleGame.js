@@ -1,4 +1,3 @@
-import React from 'react'
 import './TheWordleGame.css'
 import LetterInput from './LetterInput'
 import './6.json'
@@ -10,7 +9,7 @@ export default function TheWordleGame(props) {
   const [inputWord, setInputWord] = useState([])
   const [searchedWord, setSearchedWord] = useState(props.word)
   const [attempts, setAttempts] = useState([])
-  let [attemptsCount, setAttemptsCount] = useState(0)
+
   let wordArray = searchedWord.split('')
   console.log(searchedWord)
 
@@ -43,8 +42,6 @@ export default function TheWordleGame(props) {
     setAttempts([...attempts, inputString])
 
     if (inputString.length === 6) {
-      setAttemptsCount(attemptsCount++)
-      console.log(attemptsCount)
       if (inputString === searchedWord) {
         resetForm()
         let animation = document.getElementsByClassName('success-animation')
@@ -58,6 +55,7 @@ export default function TheWordleGame(props) {
       alert('Fill out all fields')
       resetForm()
       setAttempts([])
+
       return false
     }
   }
