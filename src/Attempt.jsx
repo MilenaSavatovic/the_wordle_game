@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import './Attempt.css'
+import Letter from './Letter'
 
 export const Attempt = ({ word, searchedWord }) => {
   const letters = useMemo(() => {
@@ -7,7 +8,6 @@ export const Attempt = ({ word, searchedWord }) => {
   }, [word])
 
   // const [trimmedWord, setTrimmedWord] = useState(searchedWord)
-  // let trimmedWord = searchedWord
 
   let trimmedWord = searchedWord
 
@@ -31,16 +31,4 @@ export const Attempt = ({ word, searchedWord }) => {
       ))}
     </div>
   )
-}
-
-const Letter = ({ letter, trimmedWord, index, wordTrimming }) => {
-  if (letter === trimmedWord[index]) {
-    return <div className="correctLetter letter">{letter}</div>
-  } else if (trimmedWord.join('').includes(letter)) {
-    wordTrimming(letter)
-    console.log(trimmedWord)
-    return <div className="misplacedLetter letter">{letter}</div>
-  } else {
-    return <div className="wrongLetter letter">{letter}</div>
-  }
 }

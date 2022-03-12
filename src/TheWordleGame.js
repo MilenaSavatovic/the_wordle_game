@@ -10,7 +10,7 @@ export default function TheWordleGame(props) {
   const [inputWord, setInputWord] = useState([])
   const [searchedWord, setSearchedWord] = useState(props.word)
   const [attempts, setAttempts] = useState([])
-  const [attemptsCount, setAttemptsCount] = useState([])
+  let [attemptsCount, setAttemptsCount] = useState(0)
   let wordArray = searchedWord.split('')
   console.log(searchedWord)
 
@@ -41,8 +41,9 @@ export default function TheWordleGame(props) {
   const handleSubmit = (event) => {
     let inputString = inputWord.join('')
     setAttempts([...attempts, inputString])
-    setAttemptsCount([...attemptsCount, +1])
+
     if (inputString.length === 6) {
+      setAttemptsCount(attemptsCount++)
       console.log(attemptsCount)
       if (inputString === searchedWord) {
         resetForm()
@@ -115,21 +116,21 @@ export default function TheWordleGame(props) {
             letter={wordArray[5]}
           />
         </form>
-        <div class="success-animation">
+        <div className="success-animation">
           <svg
-            class="checkmark"
+            className="checkmark"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 52 52"
           >
             <circle
-              class="checkmark__circle"
+              className="checkmark__circle"
               cx="26"
               cy="26"
               r="25"
               fill="none"
             />
             <path
-              class="checkmark__check"
+              className="checkmark__check"
               fill="none"
               d="M14.1 27.2l7.1 7.2 16.7-16.8"
             />
