@@ -9,14 +9,14 @@ export const Attempt = ({ word, searchedWord }) => {
 
   // const [trimmedWord, setTrimmedWord] = useState(searchedWord)
 
-  let trimmedWord = searchedWord
+  // let trimmedWord = searchedWord
 
-  let wordTrimming = (l) => {
-    trimmedWord = searchedWord.join('').replace(l, '').split('')
-    console.log(trimmedWord)
-    return trimmedWord
-    // setTrimmedWord(searchedWord.join('').replace(l, '').split(''))
-  }
+  // let wordTrimming = (l) => {
+  //   trimmedWord = searchedWord.join('').replace(l, '').split('')
+  //   console.log(trimmedWord)
+  //   return trimmedWord
+  //   // setTrimmedWord(searchedWord.join('').replace(l, '').split(''))
+  // }
 
   return (
     <div className="guessedWord">
@@ -24,9 +24,9 @@ export const Attempt = ({ word, searchedWord }) => {
         <Letter
           letter={letter}
           key={`${letter}-${index}`}
-          trimmedWord={trimmedWord}
+          searchedWord={searchedWord}
           index={index}
-          wordTrimming={wordTrimming}
+          // wordTrimming={wordTrimming}
         />
       ))}
     </div>

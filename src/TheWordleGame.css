@@ -14,12 +14,12 @@
   max-width: 700px;
   width: 100%;
   margin: auto;
-  height: 800px;
+  height: 500px;
   background-color: rgb(255, 188, 85);
   border-radius: 20px;
   padding: 20px;
   overflow: scroll;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
 }
 
 .wordInput form {
@@ -31,6 +31,10 @@
   justify-content: center;
   padding: 10px;
   margin-bottom: 40px;
+}
+
+.invisible {
+  display: none;
 }
 
 .wordInput::-webkit-scrollbar {
@@ -92,7 +96,7 @@
 
 .success-animation {
   display: none;
-  margin: 150px auto;
+  margin: 20px auto;
 }
 
 .checkmark {
