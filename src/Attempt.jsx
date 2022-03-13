@@ -7,17 +7,6 @@ export const Attempt = ({ word, searchedWord }) => {
     return word ? word.split('') : []
   }, [word])
 
-  // const [trimmedWord, setTrimmedWord] = useState(searchedWord)
-
-  // let trimmedWord = searchedWord
-
-  // let wordTrimming = (l) => {
-  //   trimmedWord = searchedWord.join('').replace(l, '').split('')
-  //   console.log(trimmedWord)
-  //   return trimmedWord
-  //   // setTrimmedWord(searchedWord.join('').replace(l, '').split(''))
-  // }
-
   return (
     <div className="guessedWord">
       {letters.map((letter, index) => (
@@ -26,7 +15,6 @@ export const Attempt = ({ word, searchedWord }) => {
           key={`${letter}-${index}`}
           searchedWord={searchedWord}
           index={index}
-          // wordTrimming={wordTrimming}
         />
       ))}
     </div>
