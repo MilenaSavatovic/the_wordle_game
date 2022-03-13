@@ -8,8 +8,8 @@ import { Attempt } from './Attempt'
 export default function TheWordleGame(props) {
   const [inputWord, setInputWord] = useState([])
   const [searchedWord, setSearchedWord] = useState(props.word)
-  const [attempts, setAttempts] = useState([])
-  // const [count, setCount] = useState(0)
+  let [attempts, setAttempts] = useState([])
+  const [count, setCount] = useState(0)
   let wordArray = searchedWord.split('')
   console.log(searchedWord)
 
@@ -40,36 +40,44 @@ export default function TheWordleGame(props) {
   const handleSubmit = (event) => {
     let inputString = inputWord.join('')
     setAttempts([...attempts, inputString])
-    // setCount(count + 1)
-    // console.log(count)
-    console.log(inputWord)
-    // console.log(inputWord.length)
+    setCount(count + 1)
+    console.log(count)
     if (inputWord.length === 6) {
-      if (inputString === searchedWord) {
-        resetForm()
-        let animation = document.getElementsByClassName('success-animation')
-        animation[0].setAttribute('style', 'display: block')
-        let form = document.getElementById('wordForm')
-        for (let i = 0; i < form.length; i++) {
-          form[i].setAttribute('style', 'display: none')
-        }
+      if (count < 6) {
+        if (inputString === searchedWord) {
+          resetForm()
+          let animation = document.getElementsByClassName('success-animation')
+          animation[0].setAttribute('style', 'display: block')
+          let form = document.getElementById('wordForm')
+          for (let i = 0; i < form.length; i++) {
+            form[i].setAttribute('style', 'display: none')
+          }
 
-        return alert('You have guessed the word')
+          return alert('You have guessed the word')
+        } else {
+          resetForm()
+          return alert('Try again')
+        }
       } else {
-        resetForm()
-        return alert('Try again')
+        refreshWord()
+
+        return alert('You have reached the maximum number of attempts')
       }
     } else {
       alert('Fill out all fields')
       resetForm()
       setAttempts([])
-      // setCount(0)
+      setCount(0)
       return false
     }
   }
 
   const refreshWord = (event) => {
-    event.preventDefault()
+    // event.preventDefault()
+    resetForm()
+    setAttempts([])
+    setCount(0)
+
     setSearchedWord(props.words[Math.floor(Math.random() * props.words.length)])
   }
 
@@ -89,38 +97,24 @@ export default function TheWordleGame(props) {
           <LetterInput
             handleInput={handleInput}
             handleInputChange={handleInputChange}
-            word={searchedWord}
-            letter={wordArray[0]}
           />
           <LetterInput
             handleInput={handleInput}
             handleInputChange={handleInputChange}
-            word={searchedWord}
-            letter={wordArray[1]}
           />
           <LetterInput
             handleInput={handleInput}
             handleInputChange={handleInputChange}
-            word={searchedWord}
-            letter={wordArray[2]}
           />
           <LetterInput
             handleInput={handleInput}
             handleInputChange={handleInputChange}
-            word={searchedWord}
-            letter={wordArray[3]}
           />
           <LetterInput
             handleInput={handleInput}
             handleInputChange={handleInputChange}
-            word={searchedWord}
-            letter={wordArray[4]}
           />
-          <LetterInput
-            handleInputChange={handleInputChange}
-            word={searchedWord}
-            letter={wordArray[5]}
-          />
+          <LetterInput handleInputChange={handleInputChange} />
         </form>
         <div className="success-animation">
           <svg
